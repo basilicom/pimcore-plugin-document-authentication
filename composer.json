@@ -1,0 +1,20 @@
+{
+    "name": "basilicom-pimcore-plugin/document-authentication",
+    "description": "Enables selective HTTP Basic Auth via document properties",
+    "type": "pimcore-plugin",
+    "license": "BSD-3-Clause",
+    "keywords": ["pimcore","authentication","password"],
+    "homepage": "http://basilicom.de/en/pimcore",
+    "authors": [
+        {
+            "name": "basilicom Team",
+            "email": "info@basilicom.de",
+            "homepage": "http://basilicom.de/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "pimcore/installer-plugin": "~1.3"
+    }
+}

@@ -38,7 +38,6 @@ class DocumentAuthentication_FrontControllerPlugin extends Zend_Controller_Plugi
         }
 
         $this->sendHttpBasicAuthResponse();
-
         exit;
     }
 
@@ -70,9 +69,10 @@ class DocumentAuthentication_FrontControllerPlugin extends Zend_Controller_Plugi
         $config = Pimcore_Tool_Frontend::getWebsiteConfig();
         $password = $config->get(DocumentAuthentication_Plugin::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD, null);
 
-        if ($password == null) {
+        if (($password === null) || (trim($password) == '')) {
 
-            $notice = 'Missing Website Property ' . DocumentAuthentication_Plugin::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD;
+            $notice = 'Missing or empty Website Property '
+                . DocumentAuthentication_Plugin::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD;
 
         } else {
 

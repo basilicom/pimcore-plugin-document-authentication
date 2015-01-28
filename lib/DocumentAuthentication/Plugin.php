@@ -19,8 +19,6 @@ class DocumentAuthentication_Plugin  extends Pimcore_API_Plugin_Abstract impleme
 
     public function init()
     {
-        // register your events here
-
         Pimcore::getEventManager()->attach("system.startup", function ($event) {
 
             $front = Zend_Controller_Front::getInstance();
@@ -28,14 +26,6 @@ class DocumentAuthentication_Plugin  extends Pimcore_API_Plugin_Abstract impleme
             $frontControllerPlugin = new DocumentAuthentication_FrontControllerPlugin();
             $front->registerPlugin($frontControllerPlugin);
         });
-
-    }
-
-    public function handleDocument ($event)
-    {
-
-        // do something
-        //$document = $event->getTarget();
     }
 
     public static function install()
@@ -73,14 +63,11 @@ class DocumentAuthentication_Plugin  extends Pimcore_API_Plugin_Abstract impleme
     {
         $db = Pimcore_Resource_Mysql::getConnection();
 
-        $sql = "DELETE FROM " . self::DB_TABLE_PRE_PROPERTIES . " WHERE name = ?";
-        $db->query($sql, array(self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED));
+        $sql = "DELETE FROM ? WHERE name = ?";
 
-        $sql = "DELETE FROM " . self::DB_TABLE_WEBSITE_SETTINGS . " WHERE name = ?";
-        $db->query($sql, array(self::CONFIG_DOCUMENT_AUTHENTICATION_USERNAME));
-
-        $sql = "DELETE FROM " . self::DB_TABLE_WEBSITE_SETTINGS . " WHERE name = ?";
-        $db->query($sql, array(self::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD));
+        $db->query($sql, array(self::DB_TABLE_PRE_PROPERTIES, self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED));
+        $db->query($sql, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_USERNAME));
+        $db->query($sql, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD));
 
         return 'Successfully removed plugin DocumentAuthentication.';
     }

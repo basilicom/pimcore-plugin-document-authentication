@@ -1,5 +1,8 @@
-Doucment Authentication Plugin
+Document Authentication Plugin
 ================================================
+
+[![Codacy Badge](https://www.codacy.com/project/badge/99428c40b3214dc4a68c43ca502ff6f9)](https://www.codacy.com/public/christophluehr_3288/pimcore-plugin-document-authentication)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/basilicom/pimcore-plugin-document-authentication/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/basilicom/pimcore-plugin-document-authentication/?branch=master)
 
 Developer info: [Pimcore at basilicom](http://basilicom.de/en/pimcore)
 

@@ -34,11 +34,11 @@ class DocumentAuthentication_Plugin
     public static function install()
     {
 
-        $db = Pimcore_Resource_Mysql::getConnection();
+        $database = Pimcore_Resource_Mysql::getConnection();
 
         if (!self::isInstalled()) {
 
-            $db->insert(self::DB_TABLE_PRE_PROPERTIES, array(
+            $database->insert(self::DB_TABLE_PRE_PROPERTIES, array(
                 'name' => self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED,
                 'key' => self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED,
                 'type' => 'bool',
@@ -46,13 +46,13 @@ class DocumentAuthentication_Plugin
                 'ctype' => 'document'
             ));
 
-            $db->insert(self::DB_TABLE_WEBSITE_SETTINGS, array(
+            $database->insert(self::DB_TABLE_WEBSITE_SETTINGS, array(
                 'name' => self::CONFIG_DOCUMENT_AUTHENTICATION_USERNAME,
                 'type' => 'text',
                 'data' => 'preview'
             ));
 
-            $db->insert(self::DB_TABLE_WEBSITE_SETTINGS, array(
+            $database->insert(self::DB_TABLE_WEBSITE_SETTINGS, array(
                 'name' => self::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD,
                 'type' => 'text',
                 'data' => md5(uniqid('', true))
@@ -64,25 +64,25 @@ class DocumentAuthentication_Plugin
 
     public static function uninstall()
     {
-        $db = Pimcore_Resource_Mysql::getConnection();
+        $database = Pimcore_Resource_Mysql::getConnection();
 
-        $sql = "DELETE FROM ? WHERE name = ?";
+        $sqlQuery = "DELETE FROM ? WHERE name = ?";
 
-        $db->query($sql, array(self::DB_TABLE_PRE_PROPERTIES, self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED));
-        $db->query($sql, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_USERNAME));
-        $db->query($sql, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD));
+        $database->query($sqlQuery, array(self::DB_TABLE_PRE_PROPERTIES, self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED));
+        $database->query($sqlQuery, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_USERNAME));
+        $database->query($sqlQuery, array(self::DB_TABLE_WEBSITE_SETTINGS, self::CONFIG_DOCUMENT_AUTHENTICATION_PASSWORD));
 
         return 'Successfully removed plugin DocumentAuthentication.';
     }
 
     public static function isInstalled()
     {
-        $db = Pimcore_Resource_Mysql::getConnection();
+        $database = Pimcore_Resource_Mysql::getConnection();
 
-        $sql = "SELECT COUNT(id) as num FROM ? WHERE name = ?";
+        $sqlQuery= "SELECT COUNT(id) as num FROM ? WHERE name = ?";
         $isInstalled = (
-            (int)$db->fetchOne(
-                $sql,
+            (int)$database->fetchOne(
+                $sqlQuery,
                 array(
                     self::DB_TABLE_PRE_PROPERTIES,
                     self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED

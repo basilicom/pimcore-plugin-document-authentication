@@ -92,4 +92,9 @@ class DocumentAuthentication_Plugin
         return $isInstalled;
     }
 
+    public static function needsReloadAfterInstall()
+    {
+        return false; // backend only functionality!
+    }
+
 }

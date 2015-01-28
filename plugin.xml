@@ -10,7 +10,7 @@
 
             <!-- meta data -->
             <pluginVersion>1.0</pluginVersion>
-            <pluginRevision>1</pluginRevision>
+            <pluginRevision>2</pluginRevision>
             <pluginBuildTimestamp>0</pluginBuildTimestamp>
 
             <!-- className of the plugin which extends Pimcore_API_Plugin_Abstract-->

@@ -1,6 +1,9 @@
 <?php
 
-class DocumentAuthentication_Plugin  extends Pimcore_API_Plugin_Abstract implements Pimcore_API_Plugin_Interface {
+class DocumentAuthentication_Plugin
+    extends Pimcore_API_Plugin_Abstract
+    implements Pimcore_API_Plugin_Interface
+{
 
     const DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED
         = 'documentAuthenticationEnabled';
@@ -76,8 +79,15 @@ class DocumentAuthentication_Plugin  extends Pimcore_API_Plugin_Abstract impleme
     {
         $db = Pimcore_Resource_Mysql::getConnection();
 
-        $sql = "SELECT COUNT(id) as num FROM " . self::DB_TABLE_PRE_PROPERTIES . " WHERE name = ?";
-        $isInstalled = ((int)$db->fetchOne($sql, array(self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED)) > 0);
+        $sql = "SELECT COUNT(id) as num FROM ? WHERE name = ?";
+        $isInstalled = (
+            (int)$db->fetchOne(
+                $sql,
+                array(
+                    self::DB_TABLE_PRE_PROPERTIES,
+                    self::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED
+                )
+            ) > 0);
 
         return $isInstalled;
     }

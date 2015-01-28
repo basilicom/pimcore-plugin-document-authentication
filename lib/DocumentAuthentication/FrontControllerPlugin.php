@@ -20,7 +20,6 @@ class DocumentAuthentication_FrontControllerPlugin extends Zend_Controller_Plugi
      */
     private function handleDocumentAuthentication($document)
     {
-
         if (is_object($document)) {
 
             if (!$document->getProperty(DocumentAuthentication_Plugin::DOC_PROPERTY_DOCUMENT_AUTHENTICATION_ENABLED)) {

@@ -5,6 +5,7 @@ Document Authentication Plugin
 [![Codacy Badge](https://www.codacy.com/project/badge/99428c40b3214dc4a68c43ca502ff6f9)](https://www.codacy.com/public/christophluehr_3288/pimcore-plugin-document-authentication)
 [![Build Status](https://scrutinizer-ci.com/g/basilicom/pimcore-plugin-document-authentication/badges/build.png?b=master)](https://scrutinizer-ci.com/g/basilicom/pimcore-plugin-document-authentication/build-status/master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/abcbcad7-4642-4882-a234-43321c705d45/mini.png)](https://insight.sensiolabs.com/projects/abcbcad7-4642-4882-a234-43321c705d45)
+[![Dependency Status](https://www.versioneye.com/user/projects/54c9071ea888b903fa000002/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54c9071ea888b903fa000002)
 
 Developer info: [Pimcore at basilicom](http://basilicom.de/en/pimcore)
 
